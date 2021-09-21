@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+httpx
+cx_Oracle
+sqlalchemy
+confluent-kafka
