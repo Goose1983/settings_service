@@ -2,64 +2,64 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: template-configmap
+  name: settings-configmap
 data:
-  DATABASE_HOST=ХОСТ_БД
-  DATABASE_PORT=ПОРТ_БД
-  DATABASE_USER=ПОЛЬЗОВАТЕЛЬ_БД
-  DATABASE_PASSWORD=ПАРОЛЬ_БД
-  DATABASE_SERVICE_NAME=СЕРВИС_БД
-  DATABASE_POOL_SIZE=РАЗМЕР_ПУЛА_КОННЕКТОВ
+  DATABASE_HOST: alfa-30
+  DATABASE_PORT: "1521"
+  DATABASE_USER: MTRX
+  DATABASE_PASSWORD: "12345"
+  DATABASE_SERVICE_NAME: cdb1
+  DATABASE_POOL_SIZE: "10"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-deployment
+  name: settings-deployment
   labels:
-    app: template
+    app: settings
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: template
+      app: settings
   template:
     metadata:
       labels:
-        app: template
+        app: settings
     spec:
       containers:
-      - name: template-app
-        image: {ваш_логин_на_докерхаб}/template:1
+      - name: settings-app
+        image: "artifactory.cinimex.ru/alfmatrix_docker/settings:0.1"
         ports:
         - containerPort: 8000
         env:
           - name: DATABASE_HOST
             valueFrom:
               configMapKeyRef:
-                name: template-configmap
+                name: settings-configmap
                 key: DATABASE_HOST
           - name: DATABASE_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: template-configmap
+                  name: settings-configmap
                   key: DATABASE_PORT
           - name: DATABASE_USER
               valueFrom:
                 configMapKeyRef:
-                  name: template-configmap
+                  name: settings-configmap
                   key: DATABASE_USER
           - name: DATABASE_PASSWORD
               valueFrom:
                 configMapKeyRef:
-                  name: template-configmap
+                  name: settings-configmap
                   key: DATABASE_PASSWORD
           - name: DATABASE_SERVICE_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: template-configmap
+                  name: settings-configmap
                   key: DATABASE_SERVICE_NAME
           - name: DATABASE_POOL_SIZE
               valueFrom:
                 configMapKeyRef:
-                  name: template-configmap
+                  name: settings-configmap
                   key: DATABASE_POOL_SIZE

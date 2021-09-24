@@ -5,11 +5,10 @@ from sqlalchemy.dialects.oracle import VARCHAR2, NUMBER
 
 metadata = MetaData()
 
-template = Table(
-    "TEMPLATE",
+M_SETTINGS = Table(
+    "M_SETTINGS",
     metadata,
-    Column("ID", VARCHAR2(32), primary_key=True),
-    Column("NAME", VARCHAR2(100), primary_key=True),
-    Column("VALUE", VARCHAR2(100), primary_key=True),
-    Column("VERSION", NUMBER(38,0), primary_key=True),
+    Column("key", VARCHAR2(50), primary_key=True),
+    Column("value", VARCHAR2(100)),
+    Column("description", VARCHAR2(256))
 )

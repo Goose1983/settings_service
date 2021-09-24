@@ -1,3 +1,6 @@
+import json
+import logging
+
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
@@ -34,5 +37,10 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 if __name__ == "__main__":
     import uvicorn
+
+    logging.basicConfig(format='%(asctime)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',
+                        filename='MATRIX_settings.log',
+                        level=settings.LOGGING_LEVEL)
+    logging.info('запуск сервиса получения настроек матрицы предложений')
 
     uvicorn.run(app)
