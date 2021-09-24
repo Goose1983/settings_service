@@ -7,7 +7,7 @@ from src.settings_fabric.settings_creator import SettingsCreator
 router = APIRouter()
 
 
-@router.post("/", response_model=GetListSettingsResponse)
+@router.get("/", response_model=GetListSettingsResponse)
 async def ksup_cacher_get(request: GetListSettingsRequest,
                           logger=Depends(injections.get_logger)) -> GetListSettingsResponse:
     """Функция получения настроек кэшера КСУП"""
