@@ -30,7 +30,7 @@ class SettingsCreator(ABC):
             self._prepare_m_settings()
             self._prepare_m_request_parameters()
         except Exception as e:
-            logging.error("Не удалось получить настройки КСУП кэшера из БД")
+            logging.error("Не удалось получить настройки КСУП кэшера из БД: %s", str(e))
             raise
 
         self._create()
