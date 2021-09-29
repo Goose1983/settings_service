@@ -13,4 +13,4 @@ SQLALCHEMY_DATABASE_URI: str = f"oracle+cx_oracle://{settings.DATABASE_USER}:{se
 
 # Грустно, но официального асинхронного клиента к Oracle нет, поэтому используем синхронный.
 # Делать multithread-обвязку, имхо, слишком дорого сейчас
-engine = create_engine(settings.SQLALCHEMY_DATABASE_URI, pool_size=int(settings.DATABASE_POOL_SIZE))
+engine = create_engine(SQLALCHEMY_DATABASE_URI, pool_size=int(settings.DATABASE_POOL_SIZE))
