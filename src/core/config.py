@@ -33,8 +33,6 @@ class Settings(BaseSettings):
     # DATABASE_PASSWORD: str = "12345"
     # DATABASE_SERVICE_NAME: str = "cdb1"
     # DATABASE_POOL_SIZE: str = "10"
-    SQLALCHEMY_DATABASE_URI: str = f"oracle+cx_oracle://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}:" \
-                                   f"{DATABASE_PORT}/?service_name={DATABASE_SERVICE_NAME} "
 
     # Путь к локальному клиенту
     # ORACLE_DIR: str = "C:/Program Files/Oracle/instantclient_12_2"  # for Windows local
@@ -42,5 +40,6 @@ class Settings(BaseSettings):
 
     # Логирование NOTSET = 0, DEBUG = 10, INFO = 20, WARNING = 30, ERROR = 40, FATAL = 50
     LOGGING_LEVEL: int = 10
+
 
 settings = Settings()

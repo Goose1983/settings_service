@@ -7,7 +7,8 @@ from src.core.config import settings
 # Потом тут будет статическая строчка с директорией до ораклового клиента внутри контейнера
 cx_Oracle.init_oracle_client(lib_dir=settings.ORACLE_DIR)
 
-SQLALCHEMY_DATABASE_URI: str = f"oracle+cx_oracle://{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}" \
+SQLALCHEMY_DATABASE_URI: str = f"oracle+cx_oracle://{settings.DATABASE_USER}:{settings.DATABASE_PASSWORD}@" \
+                               f"{settings.DATABASE_HOST}:{settings.DATABASE_PORT}" \
                                f"/?service_name={settings.DATABASE_SERVICE_NAME}"
 
 # Грустно, но официального асинхронного клиента к Oracle нет, поэтому используем синхронный.
