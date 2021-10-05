@@ -45,12 +45,12 @@ class SettingsCreator(ABC):
                 # в БД в миллисекундах, а в приложении в секундах
                 self._used_tables.append("M_SETTINGS")
                 self._settings[requested_setting] = int(self._m_settings[requested_setting]) // 1000
-            elif requested_setting in ["REPEAT_COUNT", "REPEAT_INTERVAL"]:
+            elif requested_setting in ["REPEAT_COUNT", "REPEAT_INTERVAL", "LOGGING_LEVEL"]:
                 # числа
                 self._used_tables.append("M_SETTINGS")
-                self._settings["REPEAT_INTERVAL"] = int(self._m_settings["REPEAT_INTERVAL"])
+                self._settings[requested_setting] = int(self._m_settings[requested_setting])
             elif requested_setting == "REQUEST_PARAMETERS":
-                # словарь настроек из
+                # словарь настроек из REQUEST_PARAMETERS
                 self._used_tables.append("REQUEST_PARAMETERS")
                 self._settings["REQUEST_PARAMETERS"] = dict()
                 for request_parameters_row in self._m_request_parameters:
