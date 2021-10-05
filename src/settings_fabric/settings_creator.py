@@ -37,7 +37,7 @@ class SettingsCreator(ABC):
 
     def _create(self):
         for requested_setting in self._requested_settings_list:
-            if requested_setting in ["LIST_CHANNEL_CODES", "LIST_CUSTOMER_PROFILES", "LIST_PRODUCT_TYPES"]:
+            if requested_setting in ["LIST_CHANNEL_CODES", "LIST_CUSTOMER_PROFILES", "LIST_PRODUCT_TYPES", "LIST_REGION_CODES"]:
                 # парсинг CSV значений
                 self._used_tables.append("M_SETTINGS")
                 self._settings[requested_setting] = list(self._m_settings[requested_setting].split(","))
