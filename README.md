@@ -92,8 +92,8 @@ curl -X POST -d @test_data/request.json localhost:8000/api/v1/template/insert_ex
 Предварительно завести для проекта репозиторий в корпоративном artifactory (https://wiki.cinimex.ru/pages/viewpage.action?pageId=37591118)
 Можно для начала завести учетку на dockerhub и экспериментировать с ней (https://hub.docker.com). Там же создать репозиторий, допустим, вы назвали его template.
 ```
-docker build -t {ваш_логин_на_докерхаб}/template:1 .
-docker push {ваш_логин_на_докерхаб}/template:1
+docker build -t artifactory.cinimex.ru/alfmatrix_docker/settings:0.1 .
+docker push artifactory.cinimex.ru/alfmatrix_docker/settings:0.1
 ```
 ### Запуск образа локально
 ```
